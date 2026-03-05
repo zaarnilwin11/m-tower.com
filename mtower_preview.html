@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>M-Tower</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:#0f2027;
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+color:white;
+}
+
+.brand{
+font-size:46px;
+font-weight:700;
+margin-bottom:25px;
+}
+
+.message{
+font-size:20px;
+line-height:1.7;
+margin-bottom:40px;
+}
+
+.countdown{
+font-size:38px;
+font-weight:bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<div>
+
+<div class="brand">M-Tower</div>
+
+<div class="message">
+💦 Even skyscrapers enjoy Thingyan!<br><br>
+Our digital tower is taking a festive splash break
+while Myanmar celebrates the New Year.<br><br>
+We're refreshing our systems to serve you
+better when the celebrations settle.
+</div>
+
+<div id="countdown" class="countdown"></div>
+
+</div>
+
+<script>
+
+var countDownDate = new Date().getTime() + (1000*60*60*72);
+
+setInterval(function(){
+
+var now = new Date().getTime();
+var distance = countDownDate - now;
+
+var h = Math.floor((distance % (1000*60*60*24))/(1000*60*60));
+var m = Math.floor((distance % (1000*60*60))/(1000*60));
+var s = Math.floor((distance % (1000*60))/1000);
+
+document.getElementById("countdown").innerHTML = h+"h "+m+"m "+s+"s";
+
+},1000);
+
+</script>
+
+</body>
+</html>
