@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>M-TOWER | Scheduled Maintenance</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #f4f6f9;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #1f2937;
+        }
+
+        .wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .card {
+            background: #ffffff;
+            padding: 60px;
+            width: 90%;
+            max-width: 720px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            color: #111827;
+        }
+
+        h1 {
+            font-size: 30px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #4b5563;
+            margin-bottom: 25px;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .time-box {
+            background: #111827;
+            color: #ffffff;
+            padding: 20px 25px;
+            border-radius: 4px;
+            min-width: 80px;
+        }
+
+        .time-box span {
+            display: block;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .time-box small {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #9ca3af;
+        }
+
+        .contact {
+            margin-top: 35px;
+            font-size: 14px;
+        }
+
+        .contact a {
+            color: #1d4ed8;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        footer {
+            margin-top: 40px;
+            font-size: 12px;
+            color: #9ca3af;
+        }
+
+        @media (max-width: 600px) {
+            .card {
+                padding: 40px 25px;
+            }
+            .countdown {
+                gap: 10px;
+            }
+            .time-box {
+                padding: 15px;
+                min-width: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="card">
+        <div class="logo">M-TOWER</div>
+
+        <h1>Scheduled System Maintenance</h1>
+
+        <p>
+            Our platform is currently undergoing planned infrastructure upgrades.
+            We are enhancing performance, security, and reliability.
+            Service will resume shortly.
+        </p>
+
+        <div class="countdown">
+            <div class="time-box">
+                <span id="days">0</span>
+                <small>Days</small>
+            </div>
+            <div class="time-box">
+                <span id="hours">0</span>
+                <small>Hours</small>
+            </div>
+            <div class="time-box">
+                <span id="minutes">0</span>
+                <small>Minutes</small>
+            </div>
+            <div class="time-box">
+                <span id="seconds">0</span>
+                <small>Seconds</small>
+            </div>
+        </div>
+
+        <div class="contact">
+            For urgent matters, please contact:
+            <br>
+            <a href="mailto:support@m-tower.com">support@m-tower.com</a>
+        </div>
+
+        <footer>
+            © <script>document.write(new Date().getFullYear());</script> M-TOWER. All rights reserved.
+        </footer>
+    </div>
+</div>
+
+<script>
+    // ==============================
+    // CHANGE THIS DATE TO UPDATE TIMER
+    // Format: YYYY-MM-DDTHH:MM:SS
+    // ==============================
+    const LAUNCH_DATE = "2026-03-08T00:00:00"; // 3 days example
+
+    const targetDate = new Date(LAUNCH_DATE).getTime();
+
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const difference = targetDate - now;
+
+        if (difference <= 0) {
+            document.querySelector(".countdown").innerHTML =
+                "<strong>We are now live.</strong>";
+            return;
+        }
+
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+        document.getElementById("days").innerText = days;
+        document.getElementById("hours").innerText = hours;
+        document.getElementById("minutes").innerText = minutes;
+        document.getElementById("seconds").innerText = seconds;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+</script>
+
+</body>
+</html>
